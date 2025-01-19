@@ -115,4 +115,4 @@ this package is provided free of charge to view, access, share, and use without 
 
 [scryfall_api_symbols](https://pub.dev/packages/scryfall_api_symbols) is unofficial Fan Content permitted under the Fan Content Policy. Not approved/endorsed by Wizards. Portions of the materials used are property of Wizards of the Coast. ©Wizards of the Coast LLC.
 
-[Scryfall](https://scryfall.com/) has not endorsed this package.
+[Scryfall](https://scryfall.com/) has not endorsed [scryfall_api_symbols](https://pub.dev/packages/scryfall_api_symbols) or the developers of the package.
