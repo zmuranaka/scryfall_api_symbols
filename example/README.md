@@ -1,3 +1,3 @@
 # example
 
-An example project showing how to use the magic_the_gathering_flutter package.
+An example project showing how to use the scryfall_api_symbols package.

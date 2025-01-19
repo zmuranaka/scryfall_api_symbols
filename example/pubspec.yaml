@@ -1,5 +1,5 @@
 name: example
-description: "A Flutter project to demonstrate the use of the magic_the_gathering_flutter package."
+description: "A Flutter project to demonstrate the use of the scryfall_api_symbols package."
 publish_to: 'none'
 
 version: 1.0.0+1
@@ -10,7 +10,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  magic_the_gathering_flutter:
+  scryfall_api: ^2.1.0
+  scryfall_api_symbols:
     path: ../
 
 dev_dependencies:
@@ -18,5 +19,3 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
-  assets:
-    - assets/
