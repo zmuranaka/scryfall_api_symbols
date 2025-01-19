@@ -4,11 +4,11 @@ Extension for the [scryfall_api](https://pub.dev/packages/scryfall_api) package 
 
 Develop custom MTG Flutter widgets easily with full support for MTG mana and other symbols:
 
-![Image showing four example cards](https://raw.githubusercontent.com/zmuranaka/magic_the_gathering_flutter/refs/heads/main/screenshots/screenshot_1.jpg)
+![Image showing seven example cards](https://raw.githubusercontent.com/zmuranaka/scryfall_api_symbols/refs/heads/main/screenshots/screenshot_1.jpg)
 
-Full support for "Un" sets as well:
+Full support for flip cards as well:
 
-![GIF showing an example flip card](https://raw.githubusercontent.com/zmuranaka/scryfall_api_symbols/refs/heads/main/screenshots/flip_card.gif)
+![Image showing an example flip card](https://raw.githubusercontent.com/zmuranaka/scryfall_api_symbols/refs/heads/main/screenshots/screenshot_1.jpg)
 
 ## Features
 
