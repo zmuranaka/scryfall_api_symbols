@@ -12,92 +12,76 @@ Full support for flip cards as well:
 
 ## Features
 
-* Model representing an MTG card
-* Double-faced card support
-* Convert JSON to model instances using supported `fromMap` constructor
-* SVGs for all MTG symbols and helpful methods to display them
-* Minimal external dependencies - only [flutter_svg](https://pub.dev/packages/flutter_svg) and [equatable](https://pub.dev/packages/equatable) are used
+* SVGs for all MTG symbols
+* Extensions on the [scryfall_api](https://pub.dev/packages/scryfall_api) package's [MtgCard](https://pub.dev/documentation/scryfall_api/latest/scryfall_api/MtgCard-class.html) and [CardFace](https://pub.dev/documentation/scryfall_api/latest/scryfall_api/CardFace-class.html) models that provide methods to display the MTG symbols SVGs.
 * Works on Android, iOS, Linux, MacOS, Web, Windows
 
 ## Getting started
 
-You will need to provide data for the MTG cards yourself. Consider downloading or requesting some using the [Scryfall API](https://scryfall.com/docs/api) (which this package is fully interoperable with)!
+In order to use this package, you should already be using the [scryfall_api](https://pub.dev/packages/scryfall_api) package as an explicit dependency. This means your `pubspec.yaml` should look something like this:
 
-Then instantiate an MTGCard using the model's `fromMap` constructor.
-
-```dart
-final blackLotus = MTGCard.fromMap({
-    "keywords": [],
-    "lang": "en",
-    "rarity": "bonus",
-    "released_at": "2014-06-16",
-    "reserved": true,
-    "set": "vma",
-    "set_name": "Vintage Masters",
-    "artist": "Chris Rahn",
-    "image_uris": {
-    "art_crop":
-        "https://cards.scryfall.io/art_crop/front/b/d/bd8fa327-dd41-4737-8f19-2cf5eb1f7cdd.jpg?1614638838",
-    },
-    "mana_cost": "{0}",
-    "cmc": 0.0,
-    "name": "Black Lotus",
-    "oracle_text":
-        "{T}, Sacrifice Black Lotus: Add three mana of any one color.",
-    "type_line": "Artifact",
-});
+```yaml
+dependencies:
+  flutter:
+    sdk: flutter
+  scryfall_api: ^2.1.0
 ```
 
-A default constructor is not currently supported for the `MTGCard` model. The recommended use case is to store or request the MTG card data as JSON and parse it into Dart `Map` objects.
+In any file you have instantiated an [MtgCard](https://pub.dev/documentation/scryfall_api/latest/scryfall_api/MtgCard-class.html) or a [CardFace](https://pub.dev/documentation/scryfall_api/latest/scryfall_api/CardFace-class.html) instance, you can import the following files that contain the extensions:
+
+```dart
+import 'package:scryfall_api_symbols/extensions/prepared_mana_cost.dart';
+import 'package:scryfall_api_symbols/extensions/prepared_oracle_text.dart';
+```
 
 ## API
 
-### MTGCard
+### MtgCard
 
-#### Methods
+#### MtgCardPreparedManaCost extension
 
-| Method             | Description                                            | Return Type     |
-| :----------------- | :----------------------------------------------------- | :-------------- |
-| preparedManaCost   | Displays the card's mana cost using MTG symbol SVGs    | `List<Widget>?` |
-| preparedOracleText | Displays the card's oracle text using MTG symbol SVGs  | `TextSpan?`     |
+| Method             | Description                                                 | Return Type     |
+| :----------------- | :---------------------------------------------------------- | :-------------- |
+| preparedManaCost   | Displays the card's mana cost using MTG symbol SVGs         | `List<Widget>?` |
 
-#### Properties
 
-| Property           | Description                                            | Return Type     |
-| :----------------- | :----------------------------------------------------- | :-------------- |
-| hasMultipleFaces   | Whether the card object has more than one face         | `bool`          |
-| sizeRatio          | The ratio of an MTG card's height to its width         | `double`        |
-| cornerRatio        | The ratio of an MTG card's height to its corner radius | `int`           |
+#### MtgCardPreparedOracleText extension
 
-### MTGSymbol
+| Method             | Description                                                 | Return Type     |
+| :----------------- | :---------------------------------------------------------- | :-------------- |
+| preparedOracleText | Displays the card's oracle text using MTG symbol SVGs       | `TextSpan?`     |
 
-#### Methods
+### CardFace
 
-| Method             | Description                                            | Return Type     |
-| :----------------- | :----------------------------------------------------- | :-------------- |
-| toSvg              | Converts the MTGSymbol object into an SVG widget       | `SVGPicture`    |
+#### CardFacePreparedManaCost extension
 
-#### Properties
+| Method             | Description                                                 | Return Type     |
+| :----------------- | :---------------------------------------------------------- | :-------------- |
+| preparedManaCost   | Displays the card face's mana cost using MTG symbol SVGs    | `List<Widget>?` |
 
-| Property           | Description                                            | Return Type     |
-| :----------------- | :----------------------------------------------------- | :-------------- |
-| regex              | Matches text that can be converted to an MTGSymbol     | `RegExp`        |
+
+#### CardFacePreparedOracleText extension
+
+| Method             | Description                                                 | Return Type     |
+| :----------------- | :---------------------------------------------------------- | :-------------- |
+| preparedOracleText | Displays the card face's oracle text using MTG symbol SVGs  | `TextSpan?`     |
+
 
 ## Example
 
-Below shows an example of how to display a simple widget. The example assumed you already have an `MTGCard` instance named `blackLotus`.
+Below shows an example of how to display a simple widget. The example assumes you already have an `MtgCard` instance named `blackLotus`.
 
 ```dart
-final cardImage = blackLotus.images?['art_crop'];
+final cardImage = blackLotus.imageUris?.artCrop.toString();
 final child = Column(
-    crossAxisAlignment: CrossAxisAlignment.start,
-    children: [
+  crossAxisAlignment: CrossAxisAlignment.start,
+  children: [
     Row(
-        children: [
+      children: [
         Text(blackLotus.name),
         const Spacer(),
         ...?blackLotus.preparedManaCost(),
-        ],
+      ],
     ),
     const SizedBox(height: 8.0),
     if (cardImage != null) Image.network(cardImage),
@@ -105,28 +89,30 @@ final child = Column(
     Text(blackLotus.typeLine),
     Text.rich(blackLotus.preparedOracleText() ??
         TextSpan(text: blackLotus.oracleText)),
-    ],
+  ],
 );
 return Scaffold(
-    appBar: AppBar(
+  appBar: AppBar(
     backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-    title: Text('Magic: the Gathering Flutter App'),
-    ),
-    body: SafeArea(
+    title: Text('Scryfall API Symbols Example App'),
+  ),
+  body: SafeArea(
     child: Center(child: child),
-    ),
+  ),
 );
 ```
 
-For a more detailed example, look in the [example](https://github.com/zmuranaka/magic_the_gathering_flutter/tree/main/example) directory.
+For a more detailed example, look in the [example](https://github.com/zmuranaka/scryfall_api_symbols/tree/master/example) directory.
 
 ## Contributing
 
-Contributions are welcome! Be sure to follow the linter rules defined in the [analysis_options](https://github.com/zmuranaka/magic_the_gathering_flutter/blob/main/analysis_options.yaml) file.
+Contributions are welcome! Be sure to follow the linter rules defined in the [analysis_options](https://github.com/zmuranaka/scryfall_api_symbols/blob/master/analysis_options.yaml) file.
 
 ## Legal
 
 As part of the [Wizards of the Coast Fan Content Policy](https://company.wizards.com/en/legal/fancontentpolicy),
 this package is provided free of charge to view, access, share, and use without paying for anything, obtaining any approval, or giving anyone credit.
 
-[magic_the_gathering_flutter](https://pub.dev/packages/magic_the_gathering_flutter) is unofficial Fan Content permitted under the Fan Content Policy. Not approved/endorsed by Wizards. Portions of the materials used are property of Wizards of the Coast. ©Wizards of the Coast LLC.
+[scryfall_api_symbols](https://pub.dev/packages/scryfall_api_symbols) is unofficial Fan Content permitted under the Fan Content Policy. Not approved/endorsed by Wizards. Portions of the materials used are property of Wizards of the Coast. ©Wizards of the Coast LLC.
+
+[Scryfall](https://scryfall.com/) has not endorsed this package.
