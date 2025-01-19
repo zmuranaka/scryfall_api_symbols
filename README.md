@@ -1,4 +1,4 @@
-Make developing Magic: The Gathering (MTG) apps a breeze!
+Extension for the [scryfall_api](https://pub.dev/packages/scryfall_api) package that simplifies displaying MTG symbols as Flutter widgets.
 
 ## Examples
 
@@ -8,7 +8,7 @@ Develop custom MTG Flutter widgets easily with full support for MTG mana and oth
 
 Full support for "Un" sets as well:
 
-![Image showing four example "Un" set cards](https://raw.githubusercontent.com/zmuranaka/magic_the_gathering_flutter/refs/heads/main/screenshots/screenshot_2.jpg)
+![GIF showing an example flip card](https://raw.githubusercontent.com/zmuranaka/scryfall_api_symbols/refs/heads/main/screenshots/flip_card.gif)
 
 ## Features
 
