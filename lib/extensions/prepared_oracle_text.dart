@@ -36,11 +36,11 @@ TextSpan? _preparedOracleText(String? oracleText) {
 }
 
 /// Grants the [preparedOracleText] method to [MtgCard] instances.
-extension MtgCardSymbology on MtgCard {
+extension MtgCardPreparedOracleText on MtgCard {
   TextSpan? preparedOracleText() => _preparedOracleText(oracleText);
 }
 
 /// Grants the [preparedOracleText] method to [CardFace] instances.
-extension CardFaceSymbology on CardFace {
+extension CardFacePreparedOracleText on CardFace {
   TextSpan? preparedOracleText() => _preparedOracleText(oracleText);
 }

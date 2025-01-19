@@ -36,7 +36,7 @@ List<Widget>? _preparedManaCost(String? manaCost, {EdgeInsets? padding}) {
 }
 
 /// Grants the [preparedManaCost] method to [MtgCard] instances.
-extension MtgCardSymbology on MtgCard {
+extension MtgCardPreparedManaCost on MtgCard {
   /// Returns a visual representation of the [manaCost] using SVGs for valid
   /// MTG symbols.
   /// Returns `null` if [manaCost] is `null` or it doesn't contain any valid MTG
@@ -52,7 +52,7 @@ extension MtgCardSymbology on MtgCard {
 }
 
 /// Grants the [preparedManaCost] method to [CardFace] instances.
-extension CardFaceSymbology on CardFace {
+extension CardFacePreparedManaCost on CardFace {
   /// Returns a visual representation of the [manaCost] using SVGs for valid
   /// MTG symbols.
   /// Returns `null` if [manaCost] is `null` or it doesn't contain any valid MTG
