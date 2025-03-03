@@ -1,6 +1,6 @@
 name: scryfall_api_symbols
 description: Enhance the scryfall_api package with the ability to easily display the MTG symbols as Flutter widgets.
-version: 1.0.0
+version: 1.0.1
 repository: https://github.com/zmuranaka/scryfall_api_symbols
 issue_tracker: https://github.com/zmuranaka/scryfall_api_symbols/issues
 
@@ -16,6 +16,7 @@ dependencies:
 
 dev_dependencies:
   flutter_lints: ^5.0.0
+  test: ^1.25.15
 
 flutter:
   assets:
