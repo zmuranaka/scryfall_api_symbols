@@ -27,7 +27,13 @@ dependencies:
   scryfall_api: ^2.1.0
 ```
 
-In any file you have instantiated an [MtgCard](https://pub.dev/documentation/scryfall_api/latest/scryfall_api/MtgCard-class.html) or a [CardFace](https://pub.dev/documentation/scryfall_api/latest/scryfall_api/CardFace-class.html) instance, you can import the following files that contain the extensions:
+In any file you have instantiated an [MtgCard](https://pub.dev/documentation/scryfall_api/latest/scryfall_api/MtgCard-class.html) or a [CardFace](https://pub.dev/documentation/scryfall_api/latest/scryfall_api/CardFace-class.html) instance, you can import the library file to have access to the extension methods:
+
+```dart
+import 'package:scryfall_api_symbols/scryfall_api_symbols.dart';
+```
+
+Or you can import the following files one-by-one if you only need certain functionality:
 
 ```dart
 import 'package:scryfall_api_symbols/extensions/prepared_mana_cost.dart';
