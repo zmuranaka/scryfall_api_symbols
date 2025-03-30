@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:scryfall_api/scryfall_api.dart' show MtgCard, ScryfallApiClient;
-import 'package:scryfall_api_symbols/extensions/prepared_mana_cost.dart';
-import 'package:scryfall_api_symbols/extensions/prepared_oracle_text.dart';
+import 'package:scryfall_api_symbols/scryfall_api_symbols.dart';
 
 void main() {
   runApp(const MyApp());
