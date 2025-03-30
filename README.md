@@ -27,11 +27,20 @@ dependencies:
   scryfall_api: ^2.1.0
 ```
 
-In any file you have instantiated an [MtgCard](https://pub.dev/documentation/scryfall_api/latest/scryfall_api/MtgCard-class.html) or a [CardFace](https://pub.dev/documentation/scryfall_api/latest/scryfall_api/CardFace-class.html) instance, you can import the following files that contain the extensions:
+In any file you have instantiated an [MtgCard](https://pub.dev/documentation/scryfall_api/latest/scryfall_api/MtgCard-class.html) or a [CardFace](https://pub.dev/documentation/scryfall_api/latest/scryfall_api/CardFace-class.html) instance, you can import the library file to have access to the extension methods:
+
+```dart
+import 'package:scryfall_api_symbols/scryfall_api_symbols.dart';
+```
+
+Importing the library file will also give you access to [mtgSymbology](https://pub.dev/documentation/scryfall_api_symbols/latest/models_mtg_symbology/mtgSymbology-constant.html) and [MtgSymbol](https://pub.dev/documentation/scryfall_api_symbols/latest/models_mtg_symbology/MtgSymbol-class.html).
+
+On the other hand, if you only need certain functionality, you can import the files one-by-one like so:
 
 ```dart
 import 'package:scryfall_api_symbols/extensions/prepared_mana_cost.dart';
 import 'package:scryfall_api_symbols/extensions/prepared_oracle_text.dart';
+import 'package:scryfall_api_symbols/models/mtg_symbology.dart';
 ```
 
 ## API
@@ -66,6 +75,27 @@ import 'package:scryfall_api_symbols/extensions/prepared_oracle_text.dart';
 | :----------------- | :---------------------------------------------------------- | :-------------- |
 | preparedOracleText | Displays the card face's oracle text using MTG symbol SVGs  | `TextSpan?`     |
 
+### MtgSymbol
+
+Represents a single Magic: The Gathering symbol.
+
+#### Methods
+
+| Method             | Description                                                 | Return Type     |
+| :----------------- | :---------------------------------------------------------- | :-------------- |
+| toSvg              | Converts the MtgSymbol object into an SVG widget            | `SvgPicture`    |
+
+#### Properties
+
+| Property           | Description                                                 | Return Type     |
+| :----------------- | :---------------------------------------------------------- | :-------------- |
+| regex              | Matches text that can be converted to an MtgSymbol          | `RegExp`        |
+
+### mtgSymbology
+
+A [Map](https://api.dart.dev/dart-core/Map-class.html) of [String](https://api.dart.dev/dart-core/String-class.html) keys and [MtgSymbol](https://pub.dev/documentation/scryfall_api_symbols/latest/models_mtg_symbology/MtgSymbol-class.html) instance values.
+The keys are based on the notation used in Magic: The Gathering's [Comprehensive Rules](https://magic.wizards.com/en/rules).
+The extension methods use this under the hood.
 
 ## Example
 
