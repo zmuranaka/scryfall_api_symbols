@@ -2,7 +2,7 @@ Extension for the [scryfall_api](https://pub.dev/packages/scryfall_api) package 
 
 ## Examples
 
-Develop custom MTG Flutter widgets easily with full support for MTG mana and other symbols:
+Develop custom Magic: The Gathering Flutter widgets easily with full support for MTG mana and all other symbols:
 
 ![Image showing seven example cards](https://raw.githubusercontent.com/zmuranaka/scryfall_api_symbols/refs/heads/master/screenshots/screenshot_1.jpg)
 
@@ -12,7 +12,7 @@ Full support for flip cards as well:
 
 ## Features
 
-* SVGs for all MTG symbols
+* SVGs for all MTG symbols provided by the [mtg_symbology](https://pub.dev/packages/mtg_symbology) package.
 * Extensions on the [scryfall_api](https://pub.dev/packages/scryfall_api) package's [MtgCard](https://pub.dev/documentation/scryfall_api/latest/scryfall_api/MtgCard-class.html) and [CardFace](https://pub.dev/documentation/scryfall_api/latest/scryfall_api/CardFace-class.html) models that provide methods to display the MTG symbols SVGs.
 * Works on Android, iOS, Linux, MacOS, Web, Windows
 
@@ -33,15 +33,7 @@ In any file you have instantiated an [MtgCard](https://pub.dev/documentation/scr
 import 'package:scryfall_api_symbols/scryfall_api_symbols.dart';
 ```
 
-Importing the library file will also give you access to [mtgSymbology](https://pub.dev/documentation/scryfall_api_symbols/latest/models_mtg_symbology/mtgSymbology-constant.html) and [MtgSymbol](https://pub.dev/documentation/scryfall_api_symbols/latest/models_mtg_symbology/MtgSymbol-class.html).
-
-On the other hand, if you only need certain functionality, you can import the files one-by-one like so:
-
-```dart
-import 'package:scryfall_api_symbols/extensions/prepared_mana_cost.dart';
-import 'package:scryfall_api_symbols/extensions/prepared_oracle_text.dart';
-import 'package:scryfall_api_symbols/models/mtg_symbology.dart';
-```
+This library also re-exports [mtg_symbology](https://pub.dev/packages/mtg_symbology), so you will have full access to [mtgSymbology](https://pub.dev/documentation/mtg_symbology/latest/mtg_symbology/mtgSymbology-constant.html) and [MtgSymbol](https://pub.dev/documentation/mtg_symbology/latest/mtg_symbology/MtgSymbol-class.html).
 
 ## API
 
@@ -74,28 +66,6 @@ import 'package:scryfall_api_symbols/models/mtg_symbology.dart';
 | Method             | Description                                                 | Return Type     |
 | :----------------- | :---------------------------------------------------------- | :-------------- |
 | preparedOracleText | Displays the card face's oracle text using MTG symbol SVGs  | `TextSpan?`     |
-
-### MtgSymbol
-
-Represents a single Magic: The Gathering symbol.
-
-#### Methods
-
-| Method             | Description                                                 | Return Type     |
-| :----------------- | :---------------------------------------------------------- | :-------------- |
-| toSvg              | Converts the MtgSymbol object into an SVG widget            | `SvgPicture`    |
-
-#### Properties
-
-| Property           | Description                                                 | Return Type     |
-| :----------------- | :---------------------------------------------------------- | :-------------- |
-| regex              | Matches text that can be converted to an MtgSymbol          | `RegExp`        |
-
-### mtgSymbology
-
-A [Map](https://api.dart.dev/dart-core/Map-class.html) of [String](https://api.dart.dev/dart-core/String-class.html) keys and [MtgSymbol](https://pub.dev/documentation/scryfall_api_symbols/latest/models_mtg_symbology/MtgSymbol-class.html) instance values.
-The keys are based on the notation used in Magic: The Gathering's [Comprehensive Rules](https://magic.wizards.com/en/rules).
-The extension methods use this under the hood.
 
 ## Example
 
@@ -136,7 +106,9 @@ For a more detailed example, look in the [example](https://github.com/zmuranaka/
 
 ## Contributing
 
-Contributions are welcome! Be sure to follow the linter rules defined in the [analysis_options](https://github.com/zmuranaka/scryfall_api_symbols/blob/master/analysis_options.yaml) file.
+Contributions are welcome!
+
+In order for a contribution to be considered, it must follow the linter rules in the [analysis_options](https://github.com/zmuranaka/scryfall_api_symbols/blob/master/analysis_options.yaml) file. Also, if new functionality is being added, tests should be added for that new functionality.
 
 ## Legal
 

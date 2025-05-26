@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:mtg_symbology/mtg_symbology.dart';
 import 'package:scryfall_api/scryfall_api.dart';
-import 'package:scryfall_api_symbols/models/mtg_symbology.dart';
 
 /// Returns a visual representation of the [manaCost] using SVGs for valid
 /// MTG symbols.
