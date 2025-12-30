@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Scryfall API Symbols Example App',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Color(0xff2b253a)),
+        colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xff2b253a)),
       ),
       home: const MyHomePage(),
     );
@@ -52,7 +52,7 @@ class _MyHomePageState extends State<MyHomePage> {
       _apiClient.getCardByName('Boulder Jockey'),
       _apiClient.getCardByName('Ascendant Spirit'),
       _apiClient.getCardByName('Experiment Five'),
-      _apiClient.getCardByName('Mons\'s Goblin Waiters'),
+      _apiClient.getCardByName("Mons's Goblin Waiters"),
       _apiClient.getCardByName('Rush of Inspiration'),
       _apiClient.getCardByName('Drowner of Truth'),
       _apiClient.getCardByName('Esika, God of the Tree'),
@@ -66,22 +66,24 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text('Scryfall API Symbols Example App'),
+        title: const Text('Scryfall API Symbols Example App'),
       ),
       body: SafeArea(
         child: Center(
           child: _cards.isEmpty
               ? const CircularProgressIndicator()
               : ListView.separated(
-                  padding: EdgeInsets.symmetric(horizontal: 16.0),
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
                   itemCount: _cards.length,
                   itemBuilder: (context, index) {
                     final card = _cards[index];
-                    return card.cardFaces?.isNotEmpty == true
+                    return card.cardFaces?.isNotEmpty ?? false
                         ? DoubleFacedMtgCardTile(card: card)
                         : MtgCardTile(card: card);
                   },
-                  separatorBuilder: (context, index) => Divider(thickness: 2.0),
+                  separatorBuilder: (context, index) {
+                    return const Divider(thickness: 2);
+                  },
                 ),
         ),
       ),
@@ -90,7 +92,7 @@ class _MyHomePageState extends State<MyHomePage> {
 }
 
 class MtgCardTile extends StatelessWidget {
-  const MtgCardTile({super.key, required this.card});
+  const MtgCardTile({required this.card, super.key});
 
   final MtgCard card;
 
@@ -107,9 +109,9 @@ class MtgCardTile extends StatelessWidget {
             ...?card.preparedManaCost(),
           ],
         ),
-        const SizedBox(height: 8.0),
+        const SizedBox(height: 8),
         if (cardImage != null) Image.network(cardImage.toString()),
-        const SizedBox(height: 8.0),
+        const SizedBox(height: 8),
         Text(card.typeLine),
         Text.rich(card.preparedOracleText() ?? TextSpan(text: card.oracleText)),
       ],
@@ -118,8 +120,8 @@ class MtgCardTile extends StatelessWidget {
 }
 
 class DoubleFacedMtgCardTile extends StatefulWidget {
-  DoubleFacedMtgCardTile({super.key, required this.card})
-      : assert(card.cardFaces?.isNotEmpty == true);
+  DoubleFacedMtgCardTile({required this.card, super.key})
+    : assert(card.cardFaces?.isNotEmpty ?? false);
 
   final MtgCard card;
 
@@ -144,16 +146,18 @@ class _DoubleFacedMtgCardTileState extends State<DoubleFacedMtgCardTile> {
             ...?activeFace.preparedManaCost(),
           ],
         ),
-        const SizedBox(height: 8.0),
+        const SizedBox(height: 8),
         if (activeFaceImage != null) Image.network(activeFaceImage.toString()),
-        const SizedBox(height: 8.0),
+        const SizedBox(height: 8),
         if (activeFace.typeLine != null) Text(activeFace.typeLine!),
-        Text.rich(activeFace.preparedOracleText() ??
-            TextSpan(text: activeFace.oracleText)),
+        Text.rich(
+          activeFace.preparedOracleText() ??
+              TextSpan(text: activeFace.oracleText),
+        ),
         Center(
           child: TextButton(
             onPressed: _flipCard,
-            child: Text('Flip Card'),
+            child: const Text('Flip Card'),
           ),
         ),
       ],
