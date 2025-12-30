@@ -19,7 +19,7 @@ List<Widget>? _preparedManaCost(String? manaCost, {EdgeInsets? padding}) {
   final manaCostSymbols = <Widget>[];
   for (final match in matches) {
     final matchedSymbol = match.group(0);
-    final MtgSymbol? mtgSymbol = mtgSymbology[matchedSymbol];
+    final mtgSymbol = mtgSymbology[matchedSymbol];
     if (mtgSymbol == null) {
       throw ArgumentError.value(
         matchedSymbol,

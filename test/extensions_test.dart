@@ -4,17 +4,17 @@ import 'package:scryfall_api_symbols/scryfall_api_symbols.dart';
 import 'package:test/test.dart';
 
 void main() {
-  final id = '1ebf9dea-b4f8-4955-9824-7da5bbba91e9';
-  final langStr = 'en';
-  final oracleId = '7d6c4290-d46d-4b98-805c-3f537462c4c8';
-  final printsSearchUriStr = '';
-  final rulingsUriStr = '';
-  final scryfallUriStr = '';
-  final uriStr = '';
-  final cmc = 4;
+  const id = '1ebf9dea-b4f8-4955-9824-7da5bbba91e9';
+  const langStr = 'en';
+  const oracleId = '7d6c4290-d46d-4b98-805c-3f537462c4c8';
+  const printsSearchUriStr = '';
+  const rulingsUriStr = '';
+  const scryfallUriStr = '';
+  const uriStr = '';
+  const cmc = 4;
   final colorIdentityStr = ['W'];
-  final keywords = [];
-  final layoutStr = 'normal';
+  final keywords = <String>[];
+  const layoutStr = 'normal';
   final legalities = {
     'standard': 'not_legal',
     'future': 'not_legal',
@@ -37,56 +37,56 @@ void main() {
     'duel': 'legal',
     'oldschool': 'not_legal',
     'premodern': 'not_legal',
-    'predh': 'legal'
+    'predh': 'legal',
   };
-  final name = 'Huang Zhong, Shu General';
-  final oversized = false;
-  final reserved = false;
-  final typeLine = 'Legendary Creature — Human Soldier';
-  final booster = false;
-  final borderColorStr = 'black';
-  final cardBackId = '0aeebaf5-8c7d-4636-9e82-8c27447861f7';
-  final collectorNumber = '65801';
-  final digital = true;
-  final foil = true;
-  final nonfoil = true;
+  const name = 'Huang Zhong, Shu General';
+  const oversized = false;
+  const reserved = false;
+  const typeLine = 'Legendary Creature — Human Soldier';
+  const booster = false;
+  const borderColorStr = 'black';
+  const cardBackId = '0aeebaf5-8c7d-4636-9e82-8c27447861f7';
+  const collectorNumber = '65801';
+  const digital = true;
+  const foil = true;
+  const nonfoil = true;
   final finishesStr = ['nonfoil', 'foil'];
-  final frameStr = '2015';
-  final fullArt = false;
+  const frameStr = '2015';
+  const fullArt = false;
   final gamesStr = ['mtgo'];
-  final highresImage = false;
-  final imageStatusStr = 'lowres';
+  const highresImage = false;
+  const imageStatusStr = 'lowres';
   final prices = {
     'usd': null,
     'usd_foil': null,
     'usd_etched': null,
     'eur': null,
     'eur_foil': null,
-    'tix': '1.10'
+    'tix': '1.10',
   };
-  final promo = false;
+  const promo = false;
   final purchaseUris = {'tcgplayer': '', 'cardmarket': '', 'cardhoarder': ''};
-  final rarityStr = 'rare';
+  const rarityStr = 'rare';
   final relatedUris = {
     'tcgplayer_infinite_articles': '',
     'tcgplayer_infinite_decks': '',
     'edhrec': 'https://edhrec.com/route/?cc=Huang+Zhong%2C+Shu+General',
-    'mtgtop8': ''
+    'mtgtop8': '',
   };
-  final releasedAtStr = '2016-11-16';
-  final reprint = true;
-  final scryfallSetUriStr = 'https://scryfall.com/sets/pz2?utm_source=api';
-  final setName = 'Treasure Chest';
-  final setSearchUriStr = '';
-  final setTypeStr = 'treasure_chest';
-  final setUriStr = '';
-  final set = 'pz2';
-  final setId = '2661b143-8eac-4c73-9d93-549fe928bd96';
-  final storySpotlight = false;
-  final textless = false;
-  final variation = false;
-  final manaCost = '{2}{W}{W}';
-  final oracleText = 'This card costs {2}{W}{W}';
+  const releasedAtStr = '2016-11-16';
+  const reprint = true;
+  const scryfallSetUriStr = 'https://scryfall.com/sets/pz2?utm_source=api';
+  const setName = 'Treasure Chest';
+  const setSearchUriStr = '';
+  const setTypeStr = 'treasure_chest';
+  const setUriStr = '';
+  const set = 'pz2';
+  const setId = '2661b143-8eac-4c73-9d93-549fe928bd96';
+  const storySpotlight = false;
+  const textless = false;
+  const variation = false;
+  const manaCost = '{2}{W}{W}';
+  const oracleText = 'This card costs {2}{W}{W}';
 
   final json = <String, dynamic>{
     'object': 'card',
