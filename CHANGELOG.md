@@ -1,3 +1,13 @@
+## 2.0.1 - December 30, 2025
+
+* Use [very_good_analysis](https://pub.dev/packages/very_good_analysis) for the analysis options rather than defining custom rules
+    * Address all lints raised from these new rules
+* Update [license](https://pub.dev/packages/scryfall_api_symbols/license) copyright
+* Make minimum supported [flutter_svg](https://pub.dev/packages/flutter_svg) version 2.2.3
+* Make minimum supported SDK version Flutter 3.32/Dart 3.8 - in line with [flutter_svg](https://github.com/flutter/packages/blob/30dd810481e42642b8910503f4f45a4f81b5f31d/third_party/packages/flutter_svg/pubspec.yaml#L8-L9)
+* Upgrade [test](https://pub.dev/packages/test) dev dependency version
+* Update some of the android and ios files in the [example](https://github.com/zmuranaka/scryfall_api_symbols/tree/master/example)
+
 ## 2.0.0
 
 * This package now depends on [mtg_symbology](https://pub.dev/packages/mtg_symbology)

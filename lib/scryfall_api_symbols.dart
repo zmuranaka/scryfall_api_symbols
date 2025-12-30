@@ -5,6 +5,7 @@
 /// Also re-exports [mtg_symbology](https://pub.dev/packages/mtg_symbology).
 library;
 
+export 'package:mtg_symbology/mtg_symbology.dart';
+
 export 'extensions/prepared_mana_cost.dart';
 export 'extensions/prepared_oracle_text.dart';
-export 'package:mtg_symbology/mtg_symbology.dart';

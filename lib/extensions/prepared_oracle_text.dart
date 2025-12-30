@@ -13,14 +13,14 @@ TextSpan? _preparedOracleText(String? oracleText) {
   if (matches.isEmpty) {
     return TextSpan(text: oracleText);
   }
-  final List<InlineSpan> children = [];
-  int lastIndex = 0;
+  final children = <InlineSpan>[];
+  var lastIndex = 0;
   for (final match in matches) {
     children.add(
       TextSpan(text: oracleText.substring(lastIndex, match.start)),
     );
     final matchedSymbol = match.group(0);
-    final MtgSymbol? mtgSymbol = mtgSymbology[matchedSymbol];
+    final mtgSymbol = mtgSymbology[matchedSymbol];
     if (mtgSymbol == null) {
       throw ArgumentError.value(
         matchedSymbol,
@@ -37,10 +37,18 @@ TextSpan? _preparedOracleText(String? oracleText) {
 
 /// Grants the [preparedOracleText] method to [MtgCard] instances.
 extension MtgCardPreparedOracleText on MtgCard {
+  /// Returns a visual representation of the [oracleText] using SVGs wrapped in
+  /// a [WidgetSpan] for valid MTG symbols.
+  /// Returns `null` if [oracleText] is `null`. If it doesn't contain any valid
+  /// MTG symbols, will return a [TextSpan] with the original [oracleText].
   TextSpan? preparedOracleText() => _preparedOracleText(oracleText);
 }
 
 /// Grants the [preparedOracleText] method to [CardFace] instances.
 extension CardFacePreparedOracleText on CardFace {
+  /// Returns a visual representation of the [oracleText] using SVGs wrapped in
+  /// a [WidgetSpan] for valid MTG symbols.
+  /// Returns `null` if [oracleText] is `null`. If it doesn't contain any valid
+  /// MTG symbols, will return a [TextSpan] with the original [oracleText].
   TextSpan? preparedOracleText() => _preparedOracleText(oracleText);
 }
