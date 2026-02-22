@@ -1,3 +1,8 @@
+## 2.0.2 - February 22, 2026
+
+* Upgrade [mtg_symbology](https://pub.dev/packages/mtg_symbology) and [scryfall_api](https://pub.dev/packages/scryfall_api) dependency versions
+* Upgrade [test](https://pub.dev/packages/test) dev dependency version
+
 ## 2.0.1 - December 30, 2025
 
 * Use [very_good_analysis](https://pub.dev/packages/very_good_analysis) for the analysis options rather than defining custom rules
