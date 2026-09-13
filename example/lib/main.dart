@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:scryfall_api/scryfall_api.dart' show MtgCard, ScryfallApiClient;
 import 'package:scryfall_api_symbols/scryfall_api_symbols.dart';
@@ -6,7 +8,9 @@ void main() {
   runApp(const MyApp());
 }
 
+/// A simple example app for demonstrating the scryfall_api_symbols package.
 class MyApp extends StatelessWidget {
+  /// Construct a [MyApp], optionally passing [key].
   const MyApp({super.key});
 
   @override
@@ -21,7 +25,9 @@ class MyApp extends StatelessWidget {
   }
 }
 
+/// The home page for [MyApp].
 class MyHomePage extends StatefulWidget {
+  /// Construct a [MyHomePage], optionally passing [key].
   const MyHomePage({super.key});
 
   @override
@@ -35,7 +41,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   void initState() {
     super.initState();
-    _loadMagicCards();
+    unawaited(_loadMagicCards());
   }
 
   @override
@@ -91,9 +97,12 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 }
 
+/// Shows info about a single-faced [MtgCard].
 class MtgCardTile extends StatelessWidget {
+  /// Construct a [MtgCardTile], requiring [card] and optionally passing [key].
   const MtgCardTile({required this.card, super.key});
 
+  /// The [MtgCard] that this [MtgCardTile] shows info for.
   final MtgCard card;
 
   @override
@@ -119,10 +128,17 @@ class MtgCardTile extends StatelessWidget {
   }
 }
 
+/// Shows info about a double-faced [MtgCard].
 class DoubleFacedMtgCardTile extends StatefulWidget {
+  /// Construct a [DoubleFacedMtgCardTile], requiring [card] and optionally
+  /// passing [key].
   DoubleFacedMtgCardTile({required this.card, super.key})
-    : assert(card.cardFaces?.isNotEmpty ?? false);
+    : assert(
+        card.cardFaces?.isNotEmpty ?? false,
+        'A double faced card must have non-empty faces',
+      );
 
+  /// The [MtgCard] that this [DoubleFacedMtgCardTile] shows info for.
   final MtgCard card;
 
   @override
